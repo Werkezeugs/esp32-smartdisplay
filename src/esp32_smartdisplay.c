@@ -241,12 +241,3 @@ void lvgl_display_resolution_changed_callback(lv_event_t *event)
     break;
   }
 }
-
-//TODO Move this code to EXTERN
-lv_display_t *lvgl_lcd_init()
-{
-    lv_display_t *display = lv_display_create(320, 240);
-    log_v("display:0x%08x", display);
-
-    return display;
-}
