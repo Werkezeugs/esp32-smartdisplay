@@ -245,7 +245,17 @@ void lvgl_display_resolution_changed_callback(lv_event_t *event)
 //TODO Move this code to EXTERN
 lv_display_t *lvgl_lcd_init()
 {
+    pinMode(ST7796_PIN_DC, OUTPUT); // Data or Command
+    pinMode(ST7796_PIN_CS, OUTPUT); // Chip Select
+    digitalWrite(ST7796_PIN_CS, HIGH);
+  
+    pinMode(ST7796_PIN_BL, OUTPUT); // Backlight
+    ledcSetup(ST7796_PWM_CHANNEL_BL, ST7796_PWM_FREQ_BL, ST7796_PWM_BITS_BL);
+    ledcAttachPin(ST7796_PIN_BL, ST7796_PWM_CHANNEL_BL);
+  
+    st7796_send_init_commands();
+  
+    smartdisplay_tft_set_backlight(ST7796_PWM_MAX_BL); // Backlight on
     lv_display_t *display = lv_display_create(DISPLAY_WIDTH, DISPLAY_HEIGHT);
     return display;
 }
-
