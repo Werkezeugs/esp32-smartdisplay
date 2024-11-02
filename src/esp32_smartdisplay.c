@@ -245,5 +245,6 @@ void lvgl_display_resolution_changed_callback(lv_event_t *event)
 //TODO Move this code to EXTERN
 lv_display_t *lvgl_lcd_init()
 {
-    return lv_scr_act();
+    lv_display_t *display = lv_display_create(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    return display;
 }
