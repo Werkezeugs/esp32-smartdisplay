@@ -194,7 +194,7 @@ void smartdisplay_init()
   // Setup TFT display
   display = lvgl_lcd_init();
   // Register callback for hardware rotation
-  if (!display->sw_rotate)
+  if (!display->rotation)
     lv_display_add_event_cb(display, lvgl_display_resolution_changed_callback, LV_EVENT_RESOLUTION_CHANGED, NULL);
 
   //  Clear screen
