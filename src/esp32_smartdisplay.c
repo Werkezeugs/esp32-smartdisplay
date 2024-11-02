@@ -246,13 +246,7 @@ lv_display_t *lvgl_lcd_init()
 {
     lv_display_t *display = lv_display_create(DISPLAY_WIDTH, DISPLAY_HEIGHT);
     log_v("display:0x%08x", display);
-    //  Create drawBuffer
-    lv_color_format_t cf = lv_display_get_color_format(display);
-    uint32_t px_size = lv_color_format_get_size(cf);
-    uint32_t drawBufferSize = px_size * LVGL_BUFFER_PIXELS;
-    void *drawBuffer = heap_caps_malloc(drawBufferSize, LVGL_BUFFER_MALLOC_FLAGS);
-    lv_display_set_buffers(display, drawBuffer, NULL, drawBufferSize, LV_DISPLAY_RENDER_MODE_PARTIAL);
-
+  
     // Hardware rotation is not supported
     display->rotation = LV_DISPLAY_ROTATION_0;
 
